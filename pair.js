@@ -14,7 +14,7 @@ const {
 } = require("maher-zubair-baileys");
 
 async function ensureTempDir() {
-const mkdirp = require('mkdirp');
+const mkdirp = require('mkdirp').default;
     await mkdirp('./temp');
 }
 
