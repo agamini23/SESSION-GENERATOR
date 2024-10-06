@@ -5,7 +5,6 @@ const express = require('express');
 const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
-const mkdirp = require('mkdirp');
 const {
     default: Gifted_Tech,
     useMultiFileAuthState,
@@ -15,6 +14,7 @@ const {
 } = require("maher-zubair-baileys");
 
 async function ensureTempDir() {
+const mkdirp = require('mkdirp');
     await mkdirp('./temp');
 }
 
