@@ -13,9 +13,10 @@ const {
     Browsers
 } = require("maher-zubair-baileys");
 
+const mkdirp = require('mkdirp').default; // Ubah ini
+
 async function ensureTempDir() {
-const mkdirp = require('mkdirp').default;
-    await mkdirp('./temp');
+    await mkdirp('./temp'); // Pastikan direktori 'temp' ada
 }
 
 function removeFile(FilePath){
