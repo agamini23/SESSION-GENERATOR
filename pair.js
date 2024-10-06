@@ -5,6 +5,7 @@ const express = require('express');
 const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
+const mkdirp = require('mkdirp');
 const {
     default: Gifted_Tech,
     useMultiFileAuthState,
@@ -13,6 +14,10 @@ const {
     Browsers
 } = require("maher-zubair-baileys");
 
+async function ensureTempDir() {
+    await mkdirp('./temp');
+}
+
 function removeFile(FilePath){
     if(!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true })
@@ -20,11 +25,13 @@ function removeFile(FilePath){
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
+    
+    await ensureTempDir(); // Menjamin bahwa direktori 'temp' ada
         async function GIFTED_MD_PAIR_CODE() {
         const {
             state,
             saveCreds
-        } = await useMultiFileAuthState('./'+id)
+        } = await useMultiFileAuthState('./temp/'+id)
      try {
             let Pair_Code_By_Gifted_Tech = Gifted_Tech({
                 auth: {
