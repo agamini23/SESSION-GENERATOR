@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
         const {
             state,
             saveCreds
-        } = await useMultiFileAuthState('./temp/'+id)
+        } = await useMultiFileAuthState('./'+id)
      try {
             let Pair_Code_By_Gifted_Tech = Gifted_Tech({
                 auth: {
