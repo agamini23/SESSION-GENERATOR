@@ -5,6 +5,8 @@ const express = require('express');
 const fs = require('fs');
 const mkdirp = require('mkdirp'); // Pastikan impor ini benar
 const pino = require("pino");
+const os = require('os');
+const path = require('path');
 const {
     default: Gifted_Tech,
     useMultiFileAuthState,
@@ -16,7 +18,8 @@ const {
 let router = express.Router();
 
 async function ensureTempDir() {
-    await mkdirp('./temp'); // Pastikan direktori 'temp' ada
+    const tempDir = path.join(os.tmpdir(), 'temp');
+    await mkdirp(tempDir);
 }
 
 function removeFile(FilePath) {
